@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hello_world" name="hello world">
+        <h2>
+            hello
+            <t t-out="name" />
+        </h2>
+    </template>
+    <template id="estate_props" name="template_name">
+        <div class="table">
+            <table>
+                <thead>
+                    <th>Sr no.</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>State</th>
+                </thead>
+                <tbody>
+                    <t t-set="srno" t-value="0" />
+                    <t t-foreach="property" t-as="pr">
+                        <t t-set="srno" t-value="srno + 1" />
+                        <tr t-attf-style="background:grey;" >
+                            <td>
+                                <t t-out="srno" />
+                            </td>
+                            <td>
+                                <t t-out="pr.name" />
+                            </td>
+                            <td>
+                                <t t-if="pr.description">
+                                <t t-out="pr.description" />
+                                </t>
+                                <t t-else="">
+                                    <p>No description</p>
+                                </t>
+                                
+                            </td>
+                            <td>
+                                <span t-field="pr.state"></span>
+                                <!-- <t t-out="pr.state" /> -->
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </template>
+    <template id="hello_user" name="template_name">
+        <h1>
+            hello
+            <t t-out="name" />
+        </h1>
+        <t t-call="estate.estate_props" />
+    </template>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="real_estate_properties_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban</field>
+        <field name="context">{'search_default_state':'new'}</field>
+    </record>
+
+    <record id="estate_property_type_action" model="ir.actions.act_window">
+        <field name="name">Property Types</field>
+        <field name="res_model">estate.property.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="real_estate_properties_offer_action" model="ir.actions.act_window">
+        <field name="name">Property Offer</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="real_estate_My_properties_action" model="ir.actions.act_window">
+        <field name="name">My property</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_my_property_search':1}</field>
+    </record>
+
+    <record id="real_estate_confirm_offers" model="ir.actions.act_window">
+        <field name="name">Confirm Offers</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_confirm_offer':1}</field>
+    </record>
+
+    <menuitem id="menu_real_estate_root" name="Reat Estate">
+        <menuitem id="menu_real_estate_advertisments" name="Advertisements">
+            <menuitem id="menu_real_estate_action" action="real_estate_properties_action" />
+            <menuitem id="menu_real_estate_offer_action" action="real_estate_properties_offer_action" />
+            <menuitem id="menu_real_my_estate_action" action="real_estate_My_properties_action" />
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="estate_property_type_menu" parent="menu_real_estate_root" name="Setting" />
+    <menuitem id="estate_property_type_action_menu" parent="estate_property_type_menu" action="estate_property_type_action" />
+</odoo>
