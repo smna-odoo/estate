@@ -25,7 +25,7 @@ class website(http.Controller):
         property = request.env['estate.property'].search([('state','=','sold')])
         return request.render('estate.hello_user', {'name':'Smit', 'property':property})
 
-    @http.route(['/static template', '/course/static/<string:is_static>'], auth="public", website=True)
+    @http.route(['/static template', '/property/static/<string:is_static>'], auth="public", website=True)
     def courses(self, is_static=False, **kw):
         if is_static:
             return request.render('estate.static_template', {
@@ -35,9 +35,4 @@ class website(http.Controller):
                 'properties': request.env['estate.property'].sudo().search([], limit=8)
             })
         
-    @http.route(['/course/<model("course.course"):course>', '/course/<string:is_static>'], auth="public", website=True)
-    def course_details(self, course=False, **kw):
-        if course:
-            return request.render('open_academy.course_details', {
-                'course': course,
-            })
+  
